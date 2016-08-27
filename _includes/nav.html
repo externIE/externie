@@ -1,16 +1,16 @@
 	<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
-		<button class="dl-trigger">Open Menu</button>
+		<button class="dl-trigger">{{ site.str_menuOpen }}</button>
 		<ul class="dl-menu">
-			<li><a href="{{ site.url }}/">Home</a></li>
+			<li><a href="{{ site.url }}/">{{ site.str_home }}</a></li>
 			<li>
-				<a href="#">About</a>
+				<a href="#">{{ site.str_about }}</a>
 				<ul class="dl-submenu">
 					<li>
 						<img src="{{ site.url }}/{{ site.logo }}" alt="{{ site.title }} photo" class="author-photo">
 						<h4>{{ site.title }}</h4>
 						<p>{{ site.description }}</p>
 					</li>
-					<li><a href="{{ site.url }}/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+					<li><a href="{{ site.url }}/about/"><span class="btn btn-inverse">{{ site.str_learnMore }}</span></a></li>
 					{% if site.email %}<li>
                         <a href="mailto:{{ site.email }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
                     </li>{% endif %}
@@ -63,7 +63,7 @@
                         <a href="http://soundcloud.com/{{ site.soundcloud }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-soundcloud"></i> SoundCloud</a>
                     </li>{% endif %}
                     {% if site.weibo %}<li>
-                        <a href="http://www.weibo.com/{{ site.weibo }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-weibo"></i> Weibo</a>
+                        <a href="http://www.weibo.com/{{ site.weibo }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-weibo"></i> {{ site.str_weibo }}</a>
                     </li>{% endif %}
                     {% if site.flickr %}<li>
                         <a href="http://www.flickr.com/{{ site.flickr }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-flickr"></i> Flickr</a>
@@ -83,10 +83,10 @@
 				</ul><!-- /.dl-submenu -->
 			</li>
 			<li>
-				<a href="#">Posts</a>
+				<a href="#">{{ site.str_posts }}</a>
 				<ul class="dl-submenu">
-					<li><a href="{{ site.url }}/posts/">All Posts</a></li>
-					<li><a href="{{ site.url }}/tags/">All Tags</a></li>
+					<li><a href="{{ site.url }}/posts/">{{ site.str_allPosts }}</a></li>
+					<li><a href="{{ site.url }}/tags/">{{ site.str_allTags }}</a></li>
 				</ul>
 			</li>
 			{% for link in site.data.navigation %}
