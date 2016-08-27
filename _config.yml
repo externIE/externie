@@ -8,7 +8,7 @@ logo:               'assets/img/logo.png'
 background:         'assets/img/placeholder-big.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 #locale:             en_US
-url:                http://www.externie.com/techblogs
+url:                http://externie.github.io/externie
 
 #页面资源字符串
 str_home:           首页
