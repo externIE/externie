@@ -6,7 +6,7 @@ date: 2016-12-04
 comments: false
 ---
 
-[英文版]({{ site.url }}/about/index_en.html){: .btn}
+[英文版]({{ site.url }}/about_en/){: .btn}
     
 ## 性别
 男
