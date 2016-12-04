@@ -45,7 +45,7 @@ sass:
   style:            compressed
 
 # Comments
-disqus_shortname:   externie
+#disqus_shortname:   externie
 
 # Social
 # if you don't have any of social below, comment the line.
