@@ -1,8 +1,9 @@
 <br>
 <hr>
 <span class="entry-tags">{% for tag in page.tags %}<a href="{{ site.url }}/tags/#{{ tag }}" title="Pages tagged {{ tag }}" class="tag"><span class="term">{{ tag }}</span></a>{% unless forloop.last %}{% endunless %}{% endfor %}</span>
-
-<a href="http://v.t.sina.com.cn/share/share.php?appkey=xxxx&url={{ site.url }}{{ page.url }}&title={{ page.title }}" title="Share on Google+" class="tag">
+<span class="social-share">
+    <a href="http://v.t.sina.com.cn/share/share.php?appkey=xxxx&url={{ site.url }}{{ page.url }}&title={{ page.title }}" title="Share on Google+" class="tag">
         <span class="term">分享到新浪微博</span>
-</a>
+    </a>
+</span>
 <div style="clear:both"></div>
