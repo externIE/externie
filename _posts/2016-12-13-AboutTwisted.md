@@ -60,7 +60,7 @@ class Counter(resource.Resource):
         return content.encode("ascii")
 
 endpoints.serverFromString(reactor, "tcp:8080").listen(server.Site(Counter()))
-{% endhighlingt %}
+{% endhighlight %}
 **注意!** resource对象一直存在于内存中，不需要每个request都去重复创建
 {: .notice}
 
@@ -89,7 +89,7 @@ class PubFactory(protocol.Factory):
 
 endpoints.serverFromString(reactor, "tcp:1025").listen(PubFactory())
 reactor.run()
-{% endhighlingt %}
+{% endhighlight %}
 
 ### 邮件客户端
 twisted包含了一个丰富的IMAP4客户端library
@@ -113,4 +113,4 @@ def main(reactor, username=="alice", password="secret", strport="ssl:host=exampl
         print("IMAP4 client interaction failed")
         failure.Failure().printTraceback()
 task.react(main, sys.argv[1:])
-{% endhighlingt %}
+{% endhighlight %}
