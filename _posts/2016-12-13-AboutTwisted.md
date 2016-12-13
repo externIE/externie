@@ -30,7 +30,7 @@ twisted其实就是一个事件驱动型的网络引擎，好像没什么亮点�
 
 ### Echo Server
 twisted可以很容易的实现一个网络应用。下面是一个TCP Server的示例代码：
-<% highlight python %>
+{% highlight python %}
 from twisted.internet import protocol, reactor, endpoints
 class Echo(protocol.Protocol):
     def dataReceived(self, data):
@@ -42,13 +42,11 @@ class EchoFactory(protocol.Factory):
 
 endpoints.serverFromString(reactor, "tcp:1234").listen(EchoFactory())
 reactor.run()
-<% endhighlingt%>
+{% endhighlight %}
 
 ### Web Server
 twisted包括一个事件驱动的web server，下面是一个简单的网络应用
-**注意!** resource对象一直存在于内存中，不需要每个request都去重复创建
-{: .notice}
-<% highlight python %>
+{% highlight python %}
 from twisted.web import server, resource
 from twisted.internet import reactor, endpoints
 
@@ -62,11 +60,13 @@ class Counter(resource.Resource):
         return content.encode("ascii")
 
 endpoints.serverFromString(reactor, "tcp:8080").listen(server.Site(Counter()))
-<% endhighlingt %>
+{% endhighlingt %}
+**注意!** resource对象一直存在于内存中，不需要每个request都去重复创建
+{: .notice}
 
 ### 发布/订阅服务器
 这是一个简单的发布/订阅服务器，客户端可以见到所有服务器发布的消息
-<% highlight python %>
+{% highlight python %}
 from twisted.internet import reactor, protocol, endpoints
 from twisted.protocol import basic
 class PubProtocol(basic.LineReceiver):
@@ -89,11 +89,11 @@ class PubFactory(protocol.Factory):
 
 endpoints.serverFromString(reactor, "tcp:1025").listen(PubFactory())
 reactor.run()
-<% endhighlingt %>
+{% endhighlingt %}
 
 ### 邮件客户端
 twisted包含了一个丰富的IMAP4客户端library
-<% highlight python %>
+{% highlight python %}
 from __future__ import print_function
 import sys
 from twisted.internet import protocol, defer, endpoints, task
@@ -113,4 +113,4 @@ def main(reactor, username=="alice", password="secret", strport="ssl:host=exampl
         print("IMAP4 client interaction failed")
         failure.Failure().printTraceback()
 task.react(main, sys.argv[1:])
-<% endhighlingt %>
+{% endhighlingt %}
