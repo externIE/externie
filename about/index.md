@@ -31,5 +31,3 @@ comments: false
 ## 不会什么语言
 英语
 
-## 感情情况
-我和我的macbookpro感情稳定
