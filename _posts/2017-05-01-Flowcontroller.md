@@ -1,9 +1,10 @@
 ---
-layout: project
+layout: post
 title: "换个姿势表白吧"
 date: 2017-02-14
 excerpt: "你还在送花，送包，送手机吗"
 tags: [javascript, html]
+project: true
 comments: true
 ---
 
