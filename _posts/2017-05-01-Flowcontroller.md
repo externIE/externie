@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "换个姿势表白吧"
-date: 2017-02-14
-excerpt: "你还在送花，送包，送手机吗"
-tags: [javascript, html]
+title: "一个流程控制应用"
+date: 2017-05-01
+excerpt: "人的记性太不靠谱"
+tags: [vuejs, javascript, vue, materialize]
 project: true
 comments: true
 ---
