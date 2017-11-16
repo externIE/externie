@@ -2,7 +2,7 @@
 layout: post
 title: "线程异常退出导致死锁问题的发现与解决方法"
 date: 2017-11-16
-excerpt: "各种Memory"
+excerpt: "代码追踪与案发现场还原的惊心动魄"
 tags: [线程, 死锁, C++]
 comments: true
 ---
