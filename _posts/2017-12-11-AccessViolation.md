@@ -16,9 +16,10 @@ comments: true
 - 源码（当然是review啦，机智的windbg甚至可以直接给你指出案发地点）
 
 ## 开始分析
-1. 把dump拖进windbg中
-2. 加载线上服务器的pdb文件，微软的pdb和服务器源码（可以不用）
-3. 输入命令.reload加载符号文件
+### 1. 把dump拖进windbg中
+### 2. 加载线上服务器的pdb文件，微软的pdb和服务器源码（可以不用）
+### 3. 输入命令.reload加载符号文件
+
 > 如果你是minidump，windbg会亲切的提示你，只有寄存器，栈和部分内存信息可用（已经足够你查到问题线程和栈了，但是你要想知道出问题时候的堆数据，没门）
 
 ```
@@ -31,7 +32,7 @@ User Mini Dump File: Only registers, stack and portions of memory are available
 windbg:
 User Mini Dump File with Full Memory: Only application data is available
 ```
-4. 什么都不说，先来波智能分析，命令!analyze -v
+### 4. 什么都不说，先来波智能分析，命令!analyze -v
 
 ```
 windbg:
@@ -98,9 +99,9 @@ WARNING: Stack unwind information not available. Following frames may be wrong.
 ...
 ```
 哇，是不是马上就定位到代码行了，并且还亲切的告诉你的异常类型（Access violation）和代码文件，甚至还贴心的帮你切换到了出问题的线程并恢复当时上下文输出栈信息（windbg是解决了多少程序员掉发问题）。
-5. 分析对应的源码的代码行，OnCardsActivityInfo函数的第二个参数的一个成员变量（指针）空了
-6. 为什么会空呢？（我想看看第二个参数当时的数据）
-7. 输入命令dd 0169e3b8（这是第二个参数的地址）
+### 5. 分析对应的源码的代码行，OnCardsActivityInfo函数的第二个参数的一个成员变量（指针）空了
+### 6. 为什么会空呢？（我想看看第二个参数当时的数据）
+### 7. 输入命令dd 0169e3b8（这是第二个参数的地址）
 
 ```
 windbg:
@@ -116,18 +117,18 @@ windbg:
 ```
 > 满屏Hex看不懂啊喂，能不能弄点人懂的数据，可以！
 
-8. view->watch操作如下:
+### 8. view->watch操作如下:
 
-![观察某个地址的数据（强转成某种结构体）](assets/post/accessviolation/1.png)
+![观察某个地址的数据（强转成某种结构体）](http://blog.externie.com/assets/img/post/accessviolation/1.png)
 
-9. 或者你想像在vs中调试一样看到locals变量
+### 9. 或者你想像在vs中调试一样看到locals变量
     - view->call stack
     - view->locals
     - 输入命令~34s; .ecxr; kb（34是刚才出问题的线程，.ecxr是恢复上线文，kb是输出栈）
 
 > 然后你就会看到熟悉的场面如下
 
-![image](assets/post/accessviolation/2.png)
+![image](http://blog.externie.com/assets/img/post/accessviolation/2.png)
 
 ## 总结
 这次崩溃还好只是在一个协助服务器上发生的，自动管理工具不断的在“复活”它，几十分钟内生成了好多dump文件，原因是这个服务器在shutdown的时候会重复释放内存（其实也是NULL指针导致的Access Violation），但是我并没有管它，嘻嘻，很皮。就像DEBUG阶段排除错误一样，当有上千个错误发生的时候一定要先找第一个错误（永远记得大一时候老师的这句话），几十个dump文件也应该从第一个找起，实际复查的时候，后面的几十个dump都是一个错误导致的。除了重构，DEBUG应该是程序员迭代能力最好的一个渠道了吧
